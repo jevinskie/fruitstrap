@@ -12,8 +12,8 @@ demo.app: demo Info.plist
 demo: demo.c
 	$(IOS_CC) -arch armv7 -isysroot $(SDK_PATH)/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -framework CoreFoundation -o demo demo.c
 
-fruitstrap: fruitstrap.c
-	gcc -g -o fruitstrap -framework CoreFoundation -framework MobileDevice -F/System/Library/PrivateFrameworks fruitstrap.c
+fruitstrap: fruitstrap.m
+	clang -Wall -Wextra -g -o fruitstrap -fobjc-arc -framework CoreFoundation -framework MobileDevice -framework Foundation -F/System/Library/PrivateFrameworks fruitstrap.m
 
 install: all
 	./fruitstrap install --bundle=demo.app

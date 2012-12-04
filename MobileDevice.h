@@ -442,11 +442,23 @@ mach_error_t AMDShutdownNotificationProxy(void *socket);
 mach_error_t AMDeviceDeactivate(struct am_device *device);
 mach_error_t AMDeviceActivate(struct am_device *device, CFMutableDictionaryRef);
 /*end*/
-
+int AMDeviceSecureTransferPath(int unknown0, struct am_device *device, CFURLRef url, CFDictionaryRef options, void *callback, int callback_arg);
+int AMDeviceSecureInstallApplication(int unknown0, struct am_device *device, CFURLRef url,CFDictionaryRef options, void *callback, int callback_arg);
+int AMDeviceSecureUninstallApplication(int unknown0, struct am_device *device, CFStringRef bundle_id, int unknown1, void *callback, int callback_arg);
+int AMDeviceLookupApplications(struct am_device *device, int unknown0, CFDictionaryRef *apps);
 void *AMDeviceSerialize(struct am_device *device);
 void AMDAddLogFileDescriptor(int fd);
 //kern_return_t AMDeviceSendMessage(service_conn_t socket, void *unused, CFPropertyListRef plist);
 //kern_return_t AMDeviceReceiveMessage(service_conn_t socket, CFDictionaryRef options, CFPropertyListRef * result);
+
+typedef void (*mount_callback_t)(CFDictionaryRef, int);
+int AMDeviceMountImage(struct am_device *device, CFStringRef image, CFDictionaryRef options, mount_callback_t callback, void *callback_arg);
+typedef void (*transfer_callback_t)(CFDictionaryRef, int);
+int AMDeviceTransferApplication(int afcFd, CFStringRef path, void *null, transfer_callback_t callback, void *callback_arg);
+typedef void (*install_callback_t)(CFDictionaryRef, int);
+int AMDeviceInstallApplication(int installFd, CFStringRef path, CFDictionaryRef options, install_callback_t callback, void *callback_arg);
+typedef void (*uninstall_callback_t)(CFDictionaryRef, int);
+int AMDeviceUninstallApplication(int installFd, CFStringRef bundleId, CFDictionaryRef options, uninstall_callback_t callback, void *callback_arg);
 
 /* ----------------------------------------------------------------------------
  *   Semi-private routines
@@ -487,3 +499,4 @@ typedef unsigned int (*t_performOperation)(struct am_restore_device *rdev,
 #endif
 
 #endif
+

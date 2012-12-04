@@ -55,10 +55,6 @@ typedef enum {
 } operation_t;
 
 typedef struct am_device * AMDeviceRef;
-int AMDeviceSecureTransferPath(int zero, AMDeviceRef device, CFURLRef url, CFDictionaryRef options, void *callback, int cbarg);
-int AMDeviceSecureInstallApplication(int zero, AMDeviceRef device, CFURLRef url, CFDictionaryRef options, void *callback, int cbarg);
-int AMDeviceMountImage(AMDeviceRef device, CFStringRef image, CFDictionaryRef options, void *callback, int cbarg);
-int AMDeviceLookupApplications(AMDeviceRef device, int zero, CFDictionaryRef* result);
 
 bool found_device = false, debug = false, verbose = false, quiet = false;
 char *app_path = NULL;
@@ -215,6 +211,7 @@ CFStringRef copy_developer_disk_image_path(AMDeviceRef device) {
 }
 
 void mount_callback(CFDictionaryRef dict, int arg) {
+    (void)arg; // no-unused
     CFStringRef status = CFDictionaryGetValue(dict, CFSTR("Status"));
 
     if (CFEqual(status, CFSTR("LookingUpImage"))) {
@@ -256,7 +253,7 @@ void mount_developer_image(AMDeviceRef device) {
     int result = AMDeviceMountImage(device, image_path, options, &mount_callback, 0);
     if (result == 0) {
         PRINT("[ 95%%] Developer disk image mounted successfully\n");
-    } else if (result == 0xe8000076 /* already mounted */) {
+    } else if ((unsigned int)result == 0xe8000076 /* already mounted */) {
         PRINT("[ 95%%] Developer disk image already mounted\n");
     } else {
         PRINT("[ !! ] Unable to mount developer disk image. (%x)\n", result);
@@ -268,6 +265,7 @@ void mount_developer_image(AMDeviceRef device) {
 }
 
 void transfer_callback(CFDictionaryRef dict, int arg) {
+    (void)arg; // no-unused
     int percent;
     CFStringRef status = CFDictionaryGetValue(dict, CFSTR("Status"));
     CFNumberGetValue(CFDictionaryGetValue(dict, CFSTR("PercentComplete")), kCFNumberSInt32Type, &percent);
@@ -287,6 +285,7 @@ void transfer_callback(CFDictionaryRef dict, int arg) {
 }
 
 void operation_callback(CFDictionaryRef dict, int arg) {
+    (void)arg; // no-unused
     int percent;
     CFStringRef status = CFDictionaryGetValue(dict, CFSTR("Status"));
     CFNumberGetValue(CFDictionaryGetValue(dict, CFSTR("PercentComplete")), kCFNumberSInt32Type, &percent);
@@ -294,6 +293,7 @@ void operation_callback(CFDictionaryRef dict, int arg) {
 }
 
 void fdvendor_callback(CFSocketRef s, CFSocketCallBackType callbackType, CFDataRef address, const void *data, void *info) {
+    (void)callbackType, (void)address, (void)info; // no-unused
     CFSocketNativeHandle socket = (CFSocketNativeHandle)(*((CFSocketNativeHandle *)data));
 
     struct msghdr message;
@@ -441,6 +441,7 @@ void start_remote_debug_server(AMDeviceRef device) {
 
 void gdb_ready_handler(int signum)
 {
+    (void)signum; // no-unused
 	_exit(EXIT_SUCCESS);
 }
 
@@ -762,6 +763,7 @@ void handle_device(AMDeviceRef device) {
 }
 
 void device_callback(struct am_device_notification_callback_info *info, void *arg) {
+    (void)arg; // no-unused
     switch (info->msg) {
         case ADNCI_MSG_CONNECTED:
 			if( info->dev->lockdown_conn ) {
@@ -773,6 +775,7 @@ void device_callback(struct am_device_notification_callback_info *info, void *ar
 }
 
 void timeout_callback(CFRunLoopTimerRef timer, void *info) {
+    (void)timer, (void)info; // no-unused
     if (!found_device) {
         PRINT("Timed out waiting for device.\n");
         exit(EXIT_FAILURE);
