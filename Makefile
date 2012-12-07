@@ -23,3 +23,4 @@ debug: all
 
 clean:
 	rm -rf *.app demo fruitstrap
+

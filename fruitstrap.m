@@ -1,6 +1,7 @@
 //TODO: don't copy/mount DeveloperDiskImage.dmg if it's already done - Xcode checks this somehow
 
-#import <CoreFoundation/CoreFoundation.h>
+#import <Foundation/Foundation.h>
+#include <CoreFoundation/CoreFoundation.h>
 #include <unistd.h>
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -67,6 +68,15 @@ int timeout = 0;
 operation_t operation = OP_INSTALL;
 CFStringRef last_path = NULL;
 service_conn_t gdbfd;
+
+void Log(NSString *format, ...) {
+    va_list argList;
+    va_start(argList, format);
+    NSString *message = [[NSString alloc] initWithFormat: format
+                                               arguments: argList];
+    printf("%s", [message UTF8String]);
+    va_end(argList);
+}
 
 Boolean path_exists(CFTypeRef path) {
     if (CFGetTypeID(path) == CFStringGetTypeID()) {
@@ -210,16 +220,17 @@ CFStringRef copy_developer_disk_image_path(AMDeviceRef device) {
 	return path;
 }
 
-void mount_callback(CFDictionaryRef dict, int arg) {
+void mount_callback(CFDictionaryRef dict_cf, int arg) {
     (void)arg; // no-unused
-    CFStringRef status = CFDictionaryGetValue(dict, CFSTR("Status"));
+    NSDictionary *dict = (__bridge_transfer NSDictionary *)dict_cf;
+    NSString *status = dict[@"Status"];
 
-    if (CFEqual(status, CFSTR("LookingUpImage"))) {
-        PRINT("[  0%%] Looking up developer disk image\n");
-    } else if (CFEqual(status, CFSTR("CopyingImage"))) {
-        PRINT("[ 30%%] Copying DeveloperDiskImage.dmg to device\n");
-    } else if (CFEqual(status, CFSTR("MountingImage"))) {
-        PRINT("[ 90%%] Mounting developer disk image\n");
+    if ([status isEqual:@"LookingUpImage"]) {
+        Log(@"[  0%%] Looking up developer disk image\n");
+    } else if ([status isEqual:@"CopyingIMage"]) {
+        Log(@"[ 30%%] Copying DeveloperDiskImage.dmg to device\n");
+    } else if ([status isEqual:@"MountingUpImage"]) {
+        Log(@"[ 90%%] Mounting developer disk image\n");
     }
 }
 
@@ -284,12 +295,12 @@ void transfer_callback(CFDictionaryRef dict, int arg) {
     }
 }
 
-void operation_callback(CFDictionaryRef dict, int arg) {
+void operation_callback(CFDictionaryRef dict_cf, int arg) {
     (void)arg; // no-unused
-    int percent;
-    CFStringRef status = CFDictionaryGetValue(dict, CFSTR("Status"));
-    CFNumberGetValue(CFDictionaryGetValue(dict, CFSTR("PercentComplete")), kCFNumberSInt32Type, &percent);
-    PRINT("[%3d%%] %s\n", (percent / 2) + 50, CFStringGetCStringPtr(status, kCFStringEncodingMacRoman));
+    NSDictionary *dict = (__bridge_transfer NSDictionary *)dict_cf;
+    NSString *status = dict[@"Status"];
+    NSNumber *percent = dict[@"PercentComplete"];
+    Log(@"[%3d%%] %@\n", ([percent intValue] / 2) + 50, status);
 }
 
 void fdvendor_callback(CFSocketRef s, CFSocketCallBackType callbackType, CFDataRef address, const void *data, void *info) {
