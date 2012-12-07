@@ -1,0 +1,258 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		824201A5167256D600B84ECE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824201A3167256BD00B84ECE /* CoreFoundation.framework */; };
+		824201AB167257DA00B84ECE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824201A9167257C200B84ECE /* Foundation.framework */; };
+		824201AC167257DC00B84ECE /* MobileDevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824201A71672577A00B84ECE /* MobileDevice.framework */; };
+		824201AE167257EB00B84ECE /* fruitstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 824201AD167257EB00B84ECE /* fruitstrap.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		824201911672562700B84ECE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		824201931672562700B84ECE /* fruitstrap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fruitstrap; sourceTree = BUILT_PRODUCTS_DIR; };
+		824201A3167256BD00B84ECE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		824201A71672577A00B84ECE /* MobileDevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileDevice.framework; path = /System/Library/PrivateFrameworks/MobileDevice.framework; sourceTree = "<absolute>"; };
+		824201A9167257C200B84ECE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		824201AD167257EB00B84ECE /* fruitstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fruitstrap.m; sourceTree = "<group>"; };
+		824201AF167258B700B84ECE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		82AF671D167255D600331B98 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		82AF671E167255D600331B98 /* demo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
+		82AF671F167255D600331B98 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		82AF6721167255D600331B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82AF6722167255D600331B98 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		82AF6723167255D600331B98 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		82AF6724167255D600331B98 /* MobileDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileDevice.h; sourceTree = "<group>"; };
+		82AF6725167255D600331B98 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		82AF6726167255D600331B98 /* ResourceRules.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ResourceRules.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		824201901672562700B84ECE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824201AB167257DA00B84ECE /* Foundation.framework in Frameworks */,
+				824201A5167256D600B84ECE /* CoreFoundation.framework in Frameworks */,
+				824201AC167257DC00B84ECE /* MobileDevice.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		824201941672562700B84ECE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				824201931672562700B84ECE /* fruitstrap */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		824201951672562700B84ECE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				824201A9167257C200B84ECE /* Foundation.framework */,
+				824201A71672577A00B84ECE /* MobileDevice.framework */,
+				824201A3167256BD00B84ECE /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		824201A21672567600B84ECE /* fruitstrap */ = {
+			isa = PBXGroup;
+			children = (
+				824201AD167257EB00B84ECE /* fruitstrap.m */,
+				82AF6721167255D600331B98 /* Info.plist */,
+				82AF6726167255D600331B98 /* ResourceRules.plist */,
+				82AF671F167255D600331B98 /* Entitlements.plist */,
+			);
+			name = fruitstrap;
+			sourceTree = "<group>";
+		};
+		82AF67161672559300331B98 = {
+			isa = PBXGroup;
+			children = (
+				824201AF167258B700B84ECE /* .gitignore */,
+				82AF671D167255D600331B98 /* build.sh */,
+				82AF671E167255D600331B98 /* demo.c */,
+				824201A21672567600B84ECE /* fruitstrap */,
+				82AF6722167255D600331B98 /* LICENSE */,
+				82AF6723167255D600331B98 /* Makefile */,
+				82AF6724167255D600331B98 /* MobileDevice.h */,
+				82AF6725167255D600331B98 /* README.md */,
+				824201951672562700B84ECE /* Frameworks */,
+				824201941672562700B84ECE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		824201921672562700B84ECE /* fruitstrap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 824201A11672562700B84ECE /* Build configuration list for PBXNativeTarget "fruitstrap" */;
+			buildPhases = (
+				8242018F1672562700B84ECE /* Sources */,
+				824201901672562700B84ECE /* Frameworks */,
+				824201911672562700B84ECE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fruitstrap;
+			productName = fruitstrap;
+			productReference = 824201931672562700B84ECE /* fruitstrap */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		82AF67171672559300331B98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = 82AF671A1672559300331B98 /* Build configuration list for PBXProject "fruitstrap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 82AF67161672559300331B98;
+			productRefGroup = 824201941672562700B84ECE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				824201921672562700B84ECE /* fruitstrap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8242018F1672562700B84ECE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824201AE167257EB00B84ECE /* fruitstrap.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8242019F1672562700B84ECE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		824201A01672562700B84ECE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		82AF671B1672559300331B98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		82AF671C1672559300331B98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		824201A11672562700B84ECE /* Build configuration list for PBXNativeTarget "fruitstrap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8242019F1672562700B84ECE /* Debug */,
+				824201A01672562700B84ECE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		82AF671A1672559300331B98 /* Build configuration list for PBXProject "fruitstrap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82AF671B1672559300331B98 /* Debug */,
+				82AF671C1672559300331B98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 82AF67171672559300331B98 /* Project object */;
+}
