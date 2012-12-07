@@ -78,6 +78,7 @@
 		824201A21672567600B84ECE /* fruitstrap */ = {
 			isa = PBXGroup;
 			children = (
+				82AF6724167255D600331B98 /* MobileDevice.h */,
 				824201AD167257EB00B84ECE /* fruitstrap.m */,
 				82AF6721167255D600331B98 /* Info.plist */,
 				82AF6726167255D600331B98 /* ResourceRules.plist */,
@@ -95,7 +96,6 @@
 				824201A21672567600B84ECE /* fruitstrap */,
 				82AF6722167255D600331B98 /* LICENSE */,
 				82AF6723167255D600331B98 /* Makefile */,
-				82AF6724167255D600331B98 /* MobileDevice.h */,
 				82AF6725167255D600331B98 /* README.md */,
 				824201951672562700B84ECE /* Frameworks */,
 				824201941672562700B84ECE /* Products */,
@@ -164,6 +164,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -198,6 +199,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -242,6 +244,7 @@
 				824201A01672562700B84ECE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82AF671A1672559300331B98 /* Build configuration list for PBXProject "fruitstrap" */ = {
 			isa = XCConfigurationList;
