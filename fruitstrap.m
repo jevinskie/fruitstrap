@@ -15,8 +15,6 @@
 #define PREP_CMDS_PATH "/tmp/fruitstrap-gdb-prep-cmds"
 #define GDB_SHELL      "`xcode-select -print-path`/Platforms/iPhoneOS.platform/Developer/usr/libexec/gdb/gdb-arm-apple-darwin --arch armv7f -i mi -q -x " PREP_CMDS_PATH
 
-#define PRINT(...) if (!quiet) { printf(__VA_ARGS__); fflush(stdout); }
-
 // approximation of what Xcode does:
 #define GDB_PREP_CMDS "set mi-show-protections off\n\
 set auto-raise-load-levels 1\n\
@@ -395,8 +393,7 @@ void read_dir(service_conn_t afcFd, afc_connection* afc_conn_p, const char* dir)
         
     }
     
-    printf("%s\n", dir);
-    fflush(stdout);
+    Log(@"%s\n", dir);
     
     afc_dictionary afc_dict;
     afc_dictionary* afc_dict_p = &afc_dict;
@@ -674,24 +671,24 @@ void timeout_callback(CFRunLoopTimerRef timer, void *info) {
 }
 
 void usage(const char* app) {
-    printf ("usage: %s [-q/--quiet] [-t/--timeout timeout(seconds)] [-v/--verbose] <command> [<args>] \n\n", app);
-    printf ("Commands available:\n");
-    printf ("   install    [--id=device_id] --bundle=bundle.app [--debug] [--args=arguments] \n");
-    printf ("    * Install the specified app with optional arguments to the specified device, or all\n");
-    printf ("      attached devices if none are specified. \n\n");
-    printf ("   uninstall  [--id=device_id] --bundle-id=<bundle id> \n");
-    printf ("    * Removes the specified bundle identifier (eg com.foo.MyApp) from the specified device,\n");
-    printf ("      or all attached devices if none are specified. \n\n");
-    printf ("   upload     [--id=device_id] --bundle-id=<bundle id> --file=filename [--target=filename]\n");
-    printf ("    * Uploads a file to the documents directory of the app specified with the bundle \n");
-    printf ("      identifier (eg com.foo.MyApp) to the specified device, or all attached devices if\n");
-    printf ("      none are specified. \n\n");
-    printf ("   list-files [--id=device_id] --bundle-id=<bundle id> \n");
-    printf ("    * Lists the the files in the app-specific sandbox  specified with the bundle \n");
-    printf ("      identifier (eg com.foo.MyApp) on the specified device, or all attached devices if\n");
-    printf ("      none are specified. \n\n");
-    printf ("   list-devices  \n");
-    printf ("    * List all attached devices. \n\n");
+    Log(@"usage: %s [-q/--quiet] [-t/--timeout timeout(seconds)] [-v/--verbose] <command> [<args>] \n\n", app);
+    Log(@"Commands available:\n");
+    Log(@"   install    [--id=device_id] --bundle=bundle.app [--debug] [--args=arguments] \n");
+    Log(@"    * Install the specified app with optional arguments to the specified device, or all\n");
+    Log(@"      attached devices if none are specified. \n\n");
+    Log(@"   uninstall  [--id=device_id] --bundle-id=<bundle id> \n");
+    Log(@"    * Removes the specified bundle identifier (eg com.foo.MyApp) from the specified device,\n");
+    Log(@"      or all attached devices if none are specified. \n\n");
+    Log(@"   upload     [--id=device_id] --bundle-id=<bundle id> --file=filename [--target=filename]\n");
+    Log(@"    * Uploads a file to the documents directory of the app specified with the bundle \n");
+    Log(@"      identifier (eg com.foo.MyApp) to the specified device, or all attached devices if\n");
+    Log(@"      none are specified. \n\n");
+    Log(@"   list-files [--id=device_id] --bundle-id=<bundle id> \n");
+    Log(@"    * Lists the the files in the app-specific sandbox  specified with the bundle \n");
+    Log(@"      identifier (eg com.foo.MyApp) on the specified device, or all attached devices if\n");
+    Log(@"      none are specified. \n\n");
+    Log(@"   list-devices  \n");
+    Log(@"    * List all attached devices. \n\n");
 }
 
 bool args_are_valid() {
@@ -719,6 +716,10 @@ int main(int argc, char *argv[]) {
         
         { NULL, 0, NULL, 0 },
     };
+    
+    // buffering does strange things with fork() and system() so just disable it!
+    setbuf(stdout, NULL);
+    setbuf(stderr, NULL);
     
     char ch;
     while ((ch = getopt_long(argc, argv, "qvi:b:f:da:t:", global_longopts, NULL)) != -1)
